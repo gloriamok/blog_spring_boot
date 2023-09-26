@@ -21,7 +21,7 @@ public class Comment {
     @Column(nullable = false)
     private String body;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postId", nullable = false)
     private Post post;
 }
