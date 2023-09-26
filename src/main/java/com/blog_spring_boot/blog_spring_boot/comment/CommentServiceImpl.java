@@ -45,6 +45,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<CommentDto> getCommentsByPostId(Integer postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post","id",postId));
         List<Comment> commentList = commentRepository.findByPostId(postId);
         return commentList.stream().map(comment -> mapToDTO(comment)).collect(Collectors.toList());
     }
